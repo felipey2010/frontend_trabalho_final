@@ -1,4 +1,4 @@
-// import "../styles/cadastroNoticias.css";
+import "../styles/cadastroNoticias.css";
 
 const Noticia = () => {
   return (
