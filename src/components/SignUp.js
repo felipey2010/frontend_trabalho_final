@@ -3,7 +3,7 @@ import homeIcon from "../images/home.png";
 export default function SignUp({ setSignIn }) {
   return (
     <div className="form-container sign-up-container">
-      <form action="#">
+      <div className="form">
         <div className="top-container">
           <div>
             <p> </p>
@@ -24,7 +24,7 @@ export default function SignUp({ setSignIn }) {
           <p onClick={() => setSignIn(true)}>Sign in</p>
         </div>
         <button>Sign Up</button>
-      </form>
+      </div>
     </div>
   );
 }

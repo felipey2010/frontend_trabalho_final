@@ -1,9 +1,10 @@
 import homeIcon from "../images/home.png";
+import axios from "axios";
 
-export default function SignIn({ setSignIn }) {
+export default function SignIn({ setSignIn, setSignedIn }) {
   return (
     <div className="form-container sign-in-container">
-      <form action="/login/noticias">
+      <div className="form">
         <div className="top-container">
           <div>
             <p> </p>
@@ -21,7 +22,7 @@ export default function SignIn({ setSignIn }) {
           <p onClick={() => setSignIn(false)}>Create Account</p>
         </div>
         <button>Sign In</button>
-      </form>
+      </div>
     </div>
   );
 }

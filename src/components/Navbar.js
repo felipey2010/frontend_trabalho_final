@@ -1,16 +1,18 @@
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+export default function Navbar({ user, signedIn }) {
   return (
     <nav className="navbar">
       <h1>Tech News Blog</h1>
       <div className="links">
         <Link to="/">Pagina Inicial</Link>
         <Link to="/">Categorias </Link>
-        <Link to="/login">Login </Link>
+        {signedIn ? (
+          <Link to="/criar-noticia">Criar Notícia</Link>
+        ) : (
+          <Link to="/login">Login </Link>
+        )}
       </div>
     </nav>
   );
-};
-
-export default Navbar;
+}
