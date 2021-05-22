@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
-import Blogs from "../components/Blogs";
+import CategoriesM from "../components/CategoriesMenu";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-const Home = () => {
-  const [blogs, setBlogs] = useState([]);
+const Categories = () => {
+  const [categories, setCategories] = useState([]);
 
   //the url of articles -> api/articles to pull all the articles from the database
-  const dbRequest = "articles";
+  const dbRequest = "categories";
 
   const handleDelete = (id) => {
-    const newBlogs = blogs.filter((blog) => blog.id !== id);
-    setBlogs(newBlogs);
+    const newCategoriess = categories.filter((categories) => categories.id !== id);
+    setCategories(newCategoriess);
   };
 
   async function getPosts() {
@@ -20,7 +20,7 @@ const Home = () => {
       .get(dbRequest)
       .then((result) => {
         // console.log(result.data);
-        setBlogs(result.data);
+        setCategories(result.data);
       })
       .catch((error) => {
         console.log(error);
@@ -34,8 +34,10 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <div className="content">
-        {blogs && <Blogs blogs={blogs} title="Notícias" handleDelete={handleDelete} />}
+      <div className="divInternC">
+        {categories && (
+          <CategoriesM categories={categories} title="Categorias" handleDelete={handleDelete} />
+        )}
         {/* <Blogs blogs={blogs.filter(blog => blog.id >= 4)} title="Recente" /> */}
       </div>
       <Footer />
@@ -43,4 +45,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Categories;
