@@ -1,6 +1,10 @@
 import homeIcon from "../images/home.png";
+import axios from "axios";
+import { useSnackbar } from "notistack";
 
 export default function SignUp({ setSignIn }) {
+  //for notifications
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   return (
     <div className="form-container sign-up-container">
       <div className="form">
