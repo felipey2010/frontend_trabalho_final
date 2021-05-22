@@ -36,7 +36,9 @@ const Home = () => {
       axios
         .post("user/verify_token/" + token)
         .then(result => {
+          console.log(result.data.user);
           setUser(result.data.user);
+          setSignedIn(true);
         })
         .catch(error => {
           console.log(error);
@@ -67,7 +69,7 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar user={user} signedIn={signedIn} />
+      <Navbar user={user} signedIn={signedIn} setSignedIn={setSignedIn} />
       <div className="content">
         {blogs && (
           <Blogs

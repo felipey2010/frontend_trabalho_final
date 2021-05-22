@@ -10,6 +10,9 @@ const Login = () => {
   const [signIn, setSignIn] = useState(true);
   const [signedIn, setSignedIn] = useState(false);
 
+  //for notifications
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
   let location = useLocation();
 
   //Get users from the database
