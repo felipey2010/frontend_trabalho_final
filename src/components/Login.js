@@ -28,7 +28,7 @@ const Login = () => {
           </form>
         </div>
         <div className="form-container sign-in-container">
-          <form action="/CadostroNoticias">
+          <form action="/login/noticias">
             <h1>Sign in</h1>
             <div className="social-container">
               <a href="/" className="social">
