@@ -10,7 +10,7 @@ const CadastroNoticias = () => {
             <span>Por favor, informe os dados para cadastro</span>
             <input type="text" placeholder="Título" />
             <input type="date" placeholder="Data" />
-            <textarea name="Text1" rows="13"></textarea>
+            <textarea name="Text1" rows="13" placeholder="Conteúdo"></textarea>
             <button className="cadastrarNoticia">Cadastrar</button>
           </form>
         </div>
