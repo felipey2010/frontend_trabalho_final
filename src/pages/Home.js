@@ -1,25 +1,27 @@
 import { useState, useEffect } from "react";
-import Blogs from "../components/Blogs";
+import Blogs from "../components/blogs";
 import axios from "axios";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer/index";
 
 const Home = () => {
   const [blogs, setBlogs] = useState([]);
 
   const dbRequest = "articles";
 
-  const handleDelete = id => {
-    const newBlogs = blogs.filter(blog => blog.id !== id);
+  const handleDelete = (id) => {
+    const newBlogs = blogs.filter((blog) => blog.id !== id);
     setBlogs(newBlogs);
   };
 
   async function getPosts() {
     await axios
       .get(dbRequest)
-      .then(result => {
+      .then((result) => {
         // console.log(result.data);
         setBlogs(result.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -29,11 +31,13 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="home">
-      {blogs && (
-        <Blogs blogs={blogs} title="Notícias" handleDelete={handleDelete} />
-      )}
-      {/* <Blogs blogs={blogs.filter(blog => blog.id >= 4)} title="Recente" /> */}
+    <div>
+      <Navbar />
+      <div className="home">
+        {blogs && <Blogs blogs={blogs} title="Notícias" handleDelete={handleDelete} />}
+        {/* <Blogs blogs={blogs.filter(blog => blog.id >= 4)} title="Recente" /> */}
+      </div>
+      <Footer />
     </div>
   );
 };
