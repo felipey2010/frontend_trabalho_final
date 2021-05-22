@@ -4,7 +4,7 @@ import "./index.css";
 import axios from "axios";
 import App from "./App";
 
-axios.defaults.baseURL = "http://localhost:5000/api/";
+axios.defaults.baseURL = "https://backend-blogs.herokuapp.com/api/";
 
 ReactDOM.render(
   <React.StrictMode>
