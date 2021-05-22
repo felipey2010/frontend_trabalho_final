@@ -1,4 +1,4 @@
-export default function Blog({ blogs, title, handleDelete }) {
+export default function Blogs({ blogs, title, handleDelete }) {
   return (
     <div>
       <h2>{title}</h2>

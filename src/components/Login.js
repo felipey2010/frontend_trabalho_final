@@ -2,7 +2,7 @@ import "../styles/login.css";
 
 const Login = () => {
   return (
-    <div>
+    <div className="main-body">
       <div className="container" id="container">
         <div className="form-container sign-up-container">
           <form action="#">
@@ -50,7 +50,9 @@ const Login = () => {
           <div className="overlay">
             <div className="overlay-panel overlay-left">
               <h1>Welcome Back!</h1>
-              <p>To keep connected with us please login with your personal info</p>
+              <p>
+                To keep connected with us please login with your personal info
+              </p>
               <button className="ghost" id="signIn">
                 Sign In
               </button>
@@ -75,8 +77,7 @@ const Login = () => {
           - Read how I created this and how you can join the challenge
           <a
             target="_blank"
-            href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/"
-          >
+            href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">
             here
           </a>
           .
