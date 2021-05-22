@@ -234,7 +234,7 @@
 
 .overlay-right {
   right: 0;
-  transform: translateX(0);
+  transform: translateX(10%);
 }
 
 .container .right-panel-active .overlay-right {

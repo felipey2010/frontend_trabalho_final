@@ -3,7 +3,7 @@ import homeIcon from "../images/home.png";
 export default function SignIn({ setSignIn }) {
   return (
     <div className="form-container sign-in-container">
-      <form action="#">
+      <form action="/login/noticias">
         <div className="top-container">
           <div>
             <p> </p>
