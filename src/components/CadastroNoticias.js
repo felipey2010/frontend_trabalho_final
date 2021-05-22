@@ -1,6 +1,6 @@
-import "../styles/cadastroNoticias.css";
+// import "../styles/cadastroNoticias.css";
 
-const CadastroNoticias = () => {
+const Noticia = () => {
   return (
     <div className="main-noticias">
       <div className="container" id="container">
@@ -19,4 +19,4 @@ const CadastroNoticias = () => {
   );
 };
 
-export default CadastroNoticias;
+export default Noticia;
