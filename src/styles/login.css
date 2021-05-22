@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
-* {
-  box-sizing: border-box;
-}
-
 .main-body {
   background: #f6f5f7;
   display: flex;
@@ -13,18 +9,19 @@
   font-family: "Montserrat", sans-serif;
   height: 100vh;
   margin: -20px 0 50px;
+  overflow: hidden;
 }
 
-h1 {
+.main-body h1 {
   font-weight: bold;
   margin: 0;
 }
 
-h2 {
+.main-body h2 {
   text-align: center;
 }
 
-p {
+.main-body p {
   font-size: 14px;
   font-weight: 100;
   line-height: 20px;
@@ -32,18 +29,18 @@ p {
   margin: 20px 0 30px;
 }
 
-span {
+.main-body span {
   font-size: 12px;
 }
 
-a {
+.main-body a {
   color: #333;
   font-size: 14px;
   text-decoration: none;
   margin: 15px 0;
 }
 
-button {
+.main-body button {
   border-radius: 20px;
   border: 1px solid #ff4b2b;
   background-color: #ff4b2b;
@@ -56,20 +53,20 @@ button {
   transition: transform 80ms ease-in;
 }
 
-button:active {
+.main-body button:active {
   transform: scale(0.95);
 }
 
-button:focus {
+.main-body button:focus {
   outline: none;
 }
 
-button.ghost {
+.main-body button.ghost {
   background-color: transparent;
   border-color: #ffffff;
 }
 
-form {
+.main-body form {
   background-color: #ffffff;
   display: flex;
   align-items: center;
@@ -80,7 +77,7 @@ form {
   text-align: center;
 }
 
-input {
+.main-body input {
   background-color: #eee;
   border: none;
   padding: 12px 15px;

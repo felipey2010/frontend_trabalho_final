@@ -34,7 +34,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <div className="home">
+      <div className="content">
         {blogs && (
           <Blogs blogs={blogs} title="Notícias" handleDelete={handleDelete} />
         )}
