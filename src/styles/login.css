@@ -5,11 +5,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   font-family: "Montserrat", sans-serif;
   height: 100vh;
   /* margin: -20px 0 50px; */
-  overflow: hidden;
 }
 
 .main-body h1 {
@@ -61,7 +59,7 @@
   outline: none;
 }
 
-.main-body button.ghost {
+.main-body button .ghost {
   background-color: transparent;
   border-color: #ffffff;
 }
@@ -90,8 +88,7 @@
   border-radius: 10px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
-  overflow: hidden;
-  width: 768px;
+  width: 565px;
   max-width: 100%;
   min-height: 480px;
 }
@@ -100,27 +97,63 @@
   position: absolute;
   top: 0;
   height: 100%;
-  transition: all 0.6s ease-in-out;
 }
 
 .sign-in-container {
   left: 0;
-  width: 50%;
-  z-index: 2;
-}
-
-.container.right-panel-active .sign-in-container {
-  transform: translateX(100%);
+  width: 100%;
 }
 
 .sign-up-container {
   left: 0;
-  width: 50%;
-  opacity: 0;
-  z-index: 1;
+  width: 100%;
 }
 
-.container.right-panel-active .sign-up-container {
+.row-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row-container p {
+  cursor: pointer;
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 15px 0;
+}
+
+.row-container p:hover {
+  color: #333;
+  transform: scale(1.1);
+}
+
+.top-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-container a {
+  margin: 0;
+}
+
+.home-icon {
+  width: 24px;
+}
+
+/* 
+.container .right-panel-active .sign-in-container {
+  transform: translateX(100%);
+}
+
+
+
+.container .right-panel-active .sign-up-container {
   transform: translateX(100%);
   opacity: 1;
   z-index: 5;
@@ -195,7 +228,7 @@
   transform: translateX(-20%);
 }
 
-.container.right-panel-active .overlay-left {
+.container .right-panel-active .overlay-left {
   transform: translateX(0);
 }
 
@@ -204,7 +237,7 @@
   transform: translateX(0);
 }
 
-.container.right-panel-active .overlay-right {
+.container .right-panel-active .overlay-right {
   transform: translateX(20%);
 }
 
@@ -246,4 +279,4 @@
 .main-body footer a {
   color: #3c97bf;
   text-decoration: none;
-}
+} */
