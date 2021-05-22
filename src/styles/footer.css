@@ -8,10 +8,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
 }
 
 .footer-container {
-  width: 1200px;
+  width: 100%;
   max-width: 90%;
   margin: 0 auto;
 }

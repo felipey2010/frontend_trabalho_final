@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Blogs from "../components/Blogs";
 import axios from "axios";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer/index";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const [blogs, setBlogs] = useState([]);

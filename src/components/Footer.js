@@ -1,7 +1,7 @@
-import "./styles.css";
-import whatsapp from "../../images/whatsapp.png";
+import "../styles/footer.css";
+import whatsapp from "../images/whatsapp.png";
 
-export default function footer() {
+export default function Footer() {
   return (
     <footer className="main-footer">
       <div className="footer-container">
