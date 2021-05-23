@@ -12,7 +12,7 @@ export default function Page404() {
         Página <strong>{location.pathname} não encontrada</strong>
       </p>
       <p className="empty-page-container-button">
-        Volte para a <Link to="/">Página inicial</Link>
+        <Link to="/">Página inicial</Link>
       </p>
     </div>
   );

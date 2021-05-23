@@ -5,6 +5,8 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PostedCategories from "../components/PostedCategories";
+import Page404 from "./Page404";
+import Login from "../components/Login";
 
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
@@ -21,6 +23,7 @@ export default function Home() {
   async function getUser() {
     //Check local storage for token
     const token = localStorage.getItem("token");
+
     if (token !== null) {
       //User has already signed in...verify the user's token
       axios
@@ -103,6 +106,18 @@ export default function Home() {
                     signedIn={signedIn}
                   />
                 );
+              }}
+            />
+            <Route
+              path="/login"
+              component={() => {
+                return <Login signedIn={signedIn} setSignedIn={setSignedIn} />;
+              }}
+            />
+            <Route
+              path="*"
+              component={() => {
+                return <Page404 />;
               }}
             />
           </Switch>

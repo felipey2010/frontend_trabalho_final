@@ -1,18 +1,20 @@
+import { useState } from "react";
 import "../styles/cadastroNoticias.css";
 
 const Noticia = () => {
+  const [title, setTitle] = useState("");
   return (
     <div className="main-noticias">
       <div className="container" id="container">
         <div className="form-container noticias-sign-in-container">
-          <form action="/">
+          <div className="form">
             <h1>Criar Notícia</h1>
             <span>Por favor, informe os dados para cadastro</span>
             <input type="text" placeholder="Título" />
             <input type="text" placeholder="Autor" />
             <textarea name="Text1" rows="13" placeholder="Conteúdo"></textarea>
             <button className="cadastrarNoticia">Cadastrar</button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
