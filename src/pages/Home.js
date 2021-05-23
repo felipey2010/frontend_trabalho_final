@@ -1,31 +1,21 @@
 import { useState, useEffect } from "react";
-import Blogs from "../components/blogs";
+import Posts from "../components/Posts";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useSnackbar } from "notistack";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PostedCategories from "../components/PostedCategories";
 
-const Home = () => {
+export default function Home() {
   const [blogs, setBlogs] = useState([]);
   const [user, setUser] = useState([]);
   const [signedIn, setSignedIn] = useState(false);
-
-  //for notifications
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const [categories, setCategories] = useState([]);
 
   //the url of articles -> api/articles to pull all the articles from the database
-  const dbRequest = "articles";
-
-  async function handleDelete(id) {
-    await axios.delete(dbRequest + id).then((result) => {
-      if (result.data.success) {
-        enqueueSnackbar("Post Excluido", { variant: "success" });
-        getPosts();
-      } else {
-        enqueueSnackbar("Error em excluir post", { variant: "error" });
-      }
-    });
-  }
+  const dbArticles = "articles";
+  const dbCategories = "categories";
+  const dbUser = "user/verify_token/";
 
   //Get users from the database
   async function getUser() {
@@ -34,13 +24,13 @@ const Home = () => {
     if (token !== null) {
       //User has already signed in...verify the user's token
       axios
-        .post("user/verify_token/" + token)
-        .then((result) => {
+        .post(dbUser + token)
+        .then(result => {
           console.log(result.data.user);
           setUser(result.data.user);
           setSignedIn(true);
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     } else {
@@ -49,15 +39,28 @@ const Home = () => {
     }
   }
 
+  //Get categories from the database
+  async function getCategories() {
+    await axios
+      .get(dbCategories)
+      .then(result => {
+        // console.log(result.data);
+        setCategories(result.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   //Get posts from the database
   async function getPosts() {
     await axios
-      .get(dbRequest)
-      .then((result) => {
+      .get(dbArticles)
+      .then(result => {
         // console.log(result.data);
         setBlogs(result.data);
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   }
@@ -65,20 +68,47 @@ const Home = () => {
   useEffect(() => {
     getUser();
     getPosts();
+    getCategories();
   }, []);
 
   return (
-    <div>
-      <Navbar user={user} signedIn={signedIn} setSignedIn={setSignedIn} />
-      <div className="content">
-        {blogs && (
-          <Blogs blogs={blogs} title="Notícias" handleDelete={handleDelete} signedIn={signedIn} />
-        )}
-        {/* <Blogs blogs={blogs.filter(blog => blog.id >= 4)} title="Recente" /> */}
+    <Router>
+      <div>
+        <Navbar user={user} signedIn={signedIn} setSignedIn={setSignedIn} />
+        <div className="content">
+          <Switch>
+            <Route
+              path="/home"
+              exact
+              component={() => {
+                return (
+                  <Posts
+                    blogs={blogs}
+                    getPosts={getPosts}
+                    signedIn={signedIn}
+                    title="Notícias"
+                  />
+                );
+              }}
+            />
+            <Route
+              path="/categorias/"
+              component={() => {
+                return (
+                  <PostedCategories
+                    categories={categories}
+                    getCategories={getCategories}
+                    getPosts={getPosts}
+                    blogs={blogs}
+                    signedIn={signedIn}
+                  />
+                );
+              }}
+            />
+          </Switch>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </Router>
   );
-};
-
-export default Home;
+}

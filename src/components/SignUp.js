@@ -14,6 +14,8 @@ export default function SignUp({ setSignIn }) {
   const DBRegister = "user/";
 
   async function handleSubmit() {
+    closeSnackbar();
+
     let data = {
       nome: nome,
       email: email,
@@ -47,7 +49,7 @@ export default function SignUp({ setSignIn }) {
             <p> </p>
           </div>
           <a href="/">
-            <img src={homeIcon} className="home-icon" />
+            <img src={homeIcon} className="home-icon" alt="Home icon" />
           </a>
         </div>
         <h1>Create Account</h1>

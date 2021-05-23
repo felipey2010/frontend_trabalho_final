@@ -15,7 +15,7 @@ export default function Navbar({ user, signedIn, setSignedIn }) {
 
     axios
       .post(DBLogout + data.id)
-      .then((result) => {
+      .then(result => {
         if (result.data.success) {
           enqueueSnackbar("Logout Successful", { variant: "success" });
           //clear token
@@ -23,7 +23,7 @@ export default function Navbar({ user, signedIn, setSignedIn }) {
           setSignedIn(false);
         }
       })
-      .catch((error) => {
+      .catch(error => {
         enqueueSnackbar("Logout failed", { variant: "error" });
         console.log(error);
       });
@@ -34,8 +34,12 @@ export default function Navbar({ user, signedIn, setSignedIn }) {
       <h1>Tech News Blog</h1>
       <div className="links">
         <Link to="/">Pagina Inicial</Link>
-        <Link to="/categories">Categorias </Link>
-        {signedIn ? <Link to="/criar-noticia">Criar Notícia</Link> : <Link to="/login">Login </Link>}
+        <Link to="/categorias/">Categorias </Link>
+        {signedIn ? (
+          <Link to="/criar-noticia">Criar Notícia</Link>
+        ) : (
+          <Link to="/login">Login </Link>
+        )}
         {signedIn && (
           <Link to="/" onClick={() => handleLogout(user)}>
             Logout

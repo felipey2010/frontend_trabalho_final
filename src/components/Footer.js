@@ -11,7 +11,7 @@ export default function Footer() {
               <h5 className="footer-button-text">Sobre Tech Blog</h5>
             </button>
             <div className="footer-panel">
-              <a href="#">Saiba tudo sobre Tech Blog</a>
+              <a href="/">Saiba tudo sobre Tech Blog</a>
             </div>
           </article>
 
@@ -20,7 +20,7 @@ export default function Footer() {
               <h5 className="footer-button-text">Notícias</h5>
             </button>
             <div className="footer-panel">
-              <a href="#">Confira as notícias mais recentes</a>
+              <a href="/">Confira as notícias mais recentes</a>
             </div>
           </article>
 
@@ -29,7 +29,7 @@ export default function Footer() {
               <h5 className="footer-button-text">Redes Sociais</h5>
             </button>
             <div className="footer-panel">
-              <a href="#">Siga nossas páginas</a>
+              <a href="/">Siga nossas páginas</a>
             </div>
           </article>
 
@@ -38,7 +38,7 @@ export default function Footer() {
               <h5 className="footer-button-text">Vídeos</h5>
             </button>
             <div className="footer-panel">
-              <a href="#">Os vídeos que chamaram nossa atenção</a>
+              <a href="/">Os vídeos que chamaram nossa atenção</a>
             </div>
           </article>
         </section>
@@ -47,7 +47,8 @@ export default function Footer() {
         <a
           href="https://api.whatsapp.com/send?phone=559581158214&text=Ol%C3%A1%2C%20vim%20do%20site%20e%20preciso%20de%20ajuda."
           title="Atendimento Whatsapp"
-          target="_blank">
+          target="_blank"
+          rel="noreferrer">
           <img
             src={whatsapp}
             title="Atendimento Whatsapp"

@@ -13,6 +13,8 @@ export default function SignIn({ setSignIn, setSignedIn }) {
   const DBUser = "user/login";
 
   async function authenticateUser() {
+    closeSnackbar();
+
     if (email !== "" && senha !== "") {
       let data = {
         email: email,
@@ -48,7 +50,7 @@ export default function SignIn({ setSignIn, setSignedIn }) {
             <p> </p>
           </div>
           <a href="/">
-            <img src={homeIcon} className="home-icon" />
+            <img src={homeIcon} className="home-icon" alt="Home icon" />
           </a>
         </div>
         <h1>Sign in</h1>
@@ -64,7 +66,7 @@ export default function SignIn({ setSignIn, setSignedIn }) {
           onChange={e => setSenha(e.target.value)}
         />
         <div className="row-container">
-          <a href="#">Forgot your password?</a>
+          <a href="/">Forgot your password?</a>
           <p onClick={() => setSignIn(false)}>Create Account</p>
         </div>
         <button onClick={() => authenticateUser()}>Sign In</button>

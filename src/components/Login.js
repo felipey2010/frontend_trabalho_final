@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "../styles/login.css";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
-import { Link, Redirect, useLocation } from "react-router-dom";
+import { Redirect, useLocation } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import axios from "axios";
 
@@ -11,9 +11,12 @@ const Login = () => {
   const [signedIn, setSignedIn] = useState(false);
 
   //for notifications
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   let location = useLocation();
+
+  //url to api request for verifying token
+  const dbRequest = "user/verify_token/";
 
   //Get users from the database
   async function checkToken() {
@@ -22,7 +25,7 @@ const Login = () => {
     if (token !== null) {
       //if there is a token, then user has already signed in...verify the user's token
       axios
-        .post("user/verify_token/" + token)
+        .post(dbRequest + token)
         .then(result => {
           if (result.data.success) {
             setSignedIn(true);
@@ -41,6 +44,7 @@ const Login = () => {
   }, []);
 
   if (signedIn) {
+    enqueueSnackbar("Usuário já está logado", { variant: "success" });
     return (
       // User already signed in so return to home page
       <Redirect
