@@ -15,11 +15,11 @@ export default function PostedCategories({
 
   //for notifications
   const { enqueueSnackbar } = useSnackbar();
-  const dbRequest = "categories";
+  const dbRequest = "category/";
 
-  async function handleDelete(id) {
+  async function handleDelete(data) {
     await axios
-      .post(dbRequest + id)
+      .delete(dbRequest + data._id)
       .then(result => {
         if (result.data.success) {
           enqueueSnackbar("Categoria excluida", { variant: "success" });
@@ -56,11 +56,11 @@ export default function PostedCategories({
         {categories.map(category => (
           <div
             className="category-preview"
-            key={category.id}
+            key={category._id}
             onClick={() => openCategories(category.title)}>
             <h2>{category.title}</h2>
             {signedIn && (
-              <button onClick={() => handleDelete(category.id)}>
+              <button onClick={() => handleDelete(category)}>
                 Delete Category
               </button>
             )}

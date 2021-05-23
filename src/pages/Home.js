@@ -29,7 +29,6 @@ export default function Home() {
       axios
         .post(dbUser + token)
         .then(result => {
-          console.log(result.data.user);
           setUser(result.data.user);
           setSignedIn(true);
         })
@@ -47,7 +46,6 @@ export default function Home() {
     await axios
       .get(dbCategories)
       .then(result => {
-        // console.log(result.data);
         setCategories(result.data);
       })
       .catch(error => {
@@ -60,7 +58,6 @@ export default function Home() {
     await axios
       .get(dbArticles)
       .then(result => {
-        // console.log(result.data);
         setBlogs(result.data);
       })
       .catch(error => {

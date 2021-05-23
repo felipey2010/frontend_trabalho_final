@@ -5,12 +5,12 @@ export default function Blogs({ blogs, title, getPosts, signedIn }) {
   //for notifications
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  const dbRequest = "article";
+  const dbRequest = "article/";
 
   async function handleDelete(data) {
     closeSnackbar();
-    axios
-      .post(dbRequest + data.id)
+    await axios
+      .delete(dbRequest + data._id)
       .then(result => {
         if (result.data.success) {
           enqueueSnackbar("Categoria excluida", { variant: "success" });
@@ -26,7 +26,7 @@ export default function Blogs({ blogs, title, getPosts, signedIn }) {
     <div>
       <h2>{title}</h2>
       {blogs.map(blog => (
-        <div className="blog-preview">
+        <div className="blog-preview" key={blog._id}>
           <h2>{blog.title}</h2>
           <p>{blog.body}</p>
           <p>Publicado por: {blog.author}</p>
