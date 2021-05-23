@@ -34,11 +34,11 @@ export default function Navbar({ user, signedIn, setSignedIn }) {
       <h1>Tech News Blog</h1>
       <div className="links">
         <Link to="/">Pagina Inicial</Link>
-        <Link to="/categorias/">Categorias </Link>
+        <Link to="/categorias">Categorias </Link>
         {signedIn ? (
-          <Link to="/criar-noticia">Criar Notícia</Link>
+          <Link to="/posts/criar-noticia">Criar Notícia</Link>
         ) : (
-          <Link to="/login">Login </Link>
+          <Link to="/user/login">Login </Link>
         )}
         {signedIn && (
           <Link to="/" onClick={() => handleLogout(user)}>

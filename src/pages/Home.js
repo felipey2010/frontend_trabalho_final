@@ -78,7 +78,7 @@ export default function Home() {
         <div className="content">
           <Switch>
             <Route
-              path="/home"
+              path="/"
               exact
               component={() => {
                 return (
@@ -92,7 +92,7 @@ export default function Home() {
               }}
             />
             <Route
-              path="/categorias/"
+              path="/categorias"
               component={() => {
                 return (
                   <PostedCategories
