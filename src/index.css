@@ -36,14 +36,16 @@
 }
 .content {
   max-width: 750px;
-  margin: 40px auto;
+  margin: 20px auto;
   padding: 20px;
 }
+
 /*Blog previews*/
 .blog-preview {
   padding: 10px 16px;
   margin: 20px 0;
   border-bottom: 1px solid #fafafa;
+  cursor: pointer;
 }
 .blog-preview:hover {
   box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
@@ -55,6 +57,17 @@
 }
 .blog-preview a {
   text-decoration: none;
+}
+
+.blog-author {
+  text-align: right;
+  margin-right: 12px;
+}
+
+.blog-image img {
+  float: left;
+  width: 20%;
+  margin: 5px;
 }
 
 button {
@@ -131,4 +144,49 @@ button {
 .empty-page-container-button:hover {
   transform: scale(1.05);
   transition: transform 0.1s ease-in;
+}
+
+.post-preview {
+  padding: 10px 16px;
+  margin: 20px 0;
+  border-bottom: 1px solid #fafafa;
+}
+
+.post-preview h2 {
+  font-size: 22px;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.post-preview a {
+  text-decoration: none;
+}
+
+.post-preview p {
+  margin-top: 15px;
+}
+
+.post-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.post-image img {
+  width: 100%;
+}
+
+.blog-buttons {
+  display: flex;
+  justify-content: start;
+  gap: 16px;
+}
+
+.post-buttons {
+  display: flex;
+  justify-content: start;
+  gap: 16px;
 }

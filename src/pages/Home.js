@@ -8,6 +8,8 @@ import PostedCategories from "../components/PostedCategories";
 import Page404 from "./Page404";
 import Login from "../components/Login";
 import CadastroNoticia from "../components/CadastroNoticias";
+import Article from "../components/Article";
+import EditArticle from "../components/EditArticle";
 
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
@@ -87,7 +89,7 @@ export default function Home() {
                     blogs={blogs}
                     getPosts={getPosts}
                     signedIn={signedIn}
-                    title="Notícias"
+                    title="Posts"
                   />
                 );
               }}
@@ -123,6 +125,21 @@ export default function Home() {
               component={() => {
                 return <Login signedIn={signedIn} setSignedIn={setSignedIn} />;
               }}
+            />
+            <Route
+              path="/post/:id"
+              render={props => <Article {...props} signedIn={signedIn} />}
+            />
+            <Route
+              path="/post/edit/:id"
+              render={props => (
+                <EditArticle
+                  {...props}
+                  signedIn={signedIn}
+                  getPosts={getPosts}
+                  categories={categories}
+                />
+              )}
             />
             <Route
               path="*"

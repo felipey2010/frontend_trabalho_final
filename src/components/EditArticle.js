@@ -1,20 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/cadastroNoticias.css";
 import axios from "axios";
 import { useSnackbar } from "notistack";
-import { Redirect, useLocation } from "react-router";
+import { Link } from "react-router-dom";
 
-export default function Noticia({ signedIn, categories, getPosts }) {
-  const [title, setTitle] = useState("");
-  const [articleBody, setArticleBody] = useState("");
-  const [author, setAuthor] = useState("");
-  const [imageURL, setImageURL] = useState("");
-  const [category, setCategory] = useState("");
-
-  let location = useLocation();
+const EditArticle = (props, signedIn, categories, getPosts) => {
+  const [post, setPost] = useState([]);
+  const [postFound, setPostFound] = useState(false);
+  const [title, setTitle] = useState(post.title);
+  const [articleBody, setArticleBody] = useState(post.body);
+  const [author, setAuthor] = useState(post.author);
+  const [imageURL, setImageURL] = useState(post.image);
+  const [category, setCategory] = useState(post.categories);
 
   //for notifications
   const { enqueueSnackbar } = useSnackbar();
+
+  const { id } = props.match.params;
 
   const dbArticle = "article";
 
@@ -28,15 +30,15 @@ export default function Noticia({ signedIn, categories, getPosts }) {
     };
     if (title && articleBody && author && category) {
       await axios
-        .post(dbArticle, data)
+        .put(dbArticle, data)
         .then(result => {
           if (result.data.success) {
-            enqueueSnackbar("Post criado", { variant: "success" });
+            enqueueSnackbar("Post atualizado", { variant: "success" });
             getPosts();
             clearFields();
             window.location.reload(true);
           } else {
-            enqueueSnackbar("Criação falhou", { variant: "error" });
+            enqueueSnackbar("Atualização falhou", { variant: "error" });
           }
         })
         .catch(error => {
@@ -52,14 +54,37 @@ export default function Noticia({ signedIn, categories, getPosts }) {
     setImageURL("");
   };
 
-  if (signedIn) {
+  async function getArticle() {
+    await axios
+      .get(dbArticle + id)
+      .then(result => {
+        if (result.data) {
+          setPostFound(true);
+          setPost(result.data);
+        } else {
+          setPostFound(false);
+          setPost([]);
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        setPostFound(false);
+        setPost([]);
+      });
+  }
+
+  useEffect(() => {
+    getArticle();
+  }, []);
+
+  if (signedIn && postFound) {
     return (
       <div className="main-noticias">
         <div className="container" id="container">
           <div className="form-container noticias-sign-in-container">
             <div className="form">
-              <h1>Criar Notícia</h1>
-              <span>Por favor, informe os dados para cadastro</span>
+              <h1>Editar Notícia</h1>
+              <span>Por favor, informe os dados para atualizar</span>
               <input
                 type="text"
                 placeholder="Título"
@@ -98,7 +123,7 @@ export default function Noticia({ signedIn, categories, getPosts }) {
               </div>
 
               <button className="cadastrarNoticia" onClick={() => saveData()}>
-                Cadastrar
+                Atualizar
               </button>
             </div>
           </div>
@@ -106,14 +131,14 @@ export default function Noticia({ signedIn, categories, getPosts }) {
       </div>
     );
   } else {
-    enqueueSnackbar("Sem Autorização", { variant: "error" });
     return (
-      <Redirect
-        to={{
-          pathname: "/",
-          state: { from: location.pathname },
-        }}
-      />
+      <div className="blog-preview">
+        <div className="blog-container">
+          <h2>Oops...we could not find this post</h2>
+          <Link to="/">Página Inicial</Link>
+        </div>
+      </div>
     );
   }
-}
+};
+export default EditArticle;

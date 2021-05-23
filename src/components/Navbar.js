@@ -20,10 +20,12 @@ export default function Navbar({ user, signedIn, setSignedIn }) {
           //clear token
           localStorage.clear();
           setSignedIn(false);
+        } else {
+          enqueueSnackbar("Logout failed", { variant: "error" });
         }
       })
       .catch(error => {
-        enqueueSnackbar("Logout failed", { variant: "error" });
+        enqueueSnackbar("System Error", { variant: "error" });
         console.log(error);
       });
   }
