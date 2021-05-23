@@ -3,13 +3,14 @@ import axios from "axios";
 
 export default function Blogs({ blogs, title, getPosts, signedIn }) {
   //for notifications
-  const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const dbRequest = "article";
 
-  async function handleDelete(id) {
+  async function handleDelete(data) {
+    closeSnackbar();
     axios
-      .post(dbRequest + id)
+      .post(dbRequest + data.id)
       .then(result => {
         if (result.data.success) {
           enqueueSnackbar("Categoria excluida", { variant: "success" });
@@ -31,7 +32,7 @@ export default function Blogs({ blogs, title, getPosts, signedIn }) {
           <p>Publicado por: {blog.author}</p>
 
           {signedIn && (
-            <button onClick={() => handleDelete(blog.id)}>Delete post</button>
+            <button onClick={() => handleDelete(blog)}>Delete post</button>
           )}
         </div>
       ))}

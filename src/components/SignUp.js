@@ -2,6 +2,7 @@ import { useState } from "react";
 import homeIcon from "../images/home.png";
 import axios from "axios";
 import { useSnackbar } from "notistack";
+import { Link } from "react-router-dom";
 
 export default function SignUp({ setSignIn }) {
   const [nome, setNome] = useState("");
@@ -48,9 +49,9 @@ export default function SignUp({ setSignIn }) {
           <div>
             <p> </p>
           </div>
-          <a href="/">
+          <Link to="/">
             <img src={homeIcon} className="home-icon" alt="Home icon" />
-          </a>
+          </Link>
         </div>
         <h1>Create Account</h1>
         <span>Access using your e-mail</span>

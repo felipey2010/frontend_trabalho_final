@@ -2,6 +2,7 @@ import { useState } from "react";
 import homeIcon from "../images/home.png";
 import axios from "axios";
 import { useSnackbar } from "notistack";
+import { Link } from "react-router-dom";
 
 export default function SignIn({ setSignIn, setSignedIn }) {
   const [email, setEmail] = useState("");
@@ -49,9 +50,9 @@ export default function SignIn({ setSignIn, setSignedIn }) {
           <div>
             <p> </p>
           </div>
-          <a href="/">
+          <Link to="/">
             <img src={homeIcon} className="home-icon" alt="Home icon" />
-          </a>
+          </Link>
         </div>
         <h1>Sign in</h1>
         <span>Use your account details</span>
