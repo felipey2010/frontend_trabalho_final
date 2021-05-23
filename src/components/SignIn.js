@@ -35,6 +35,8 @@ export default function SignIn({ setSignIn, setSignedIn }) {
           console.log(error);
           setSignedIn(false);
         });
+    } else {
+      enqueueSnackbar("Informe todos os campos", { variant: "error" });
     }
   }
 
