@@ -77,7 +77,6 @@ export default function CadastroNoticia({
                 placeholder="Autor"
                 required
                 value={author}
-                disabled
                 onChange={e => setAuthor(e.target.value)}
               />
               <textarea
