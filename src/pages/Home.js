@@ -116,6 +116,7 @@ export default function Home() {
                     signedIn={signedIn}
                     categories={categories}
                     getPosts={getPosts}
+                    user={user}
                   />
                 );
               }}

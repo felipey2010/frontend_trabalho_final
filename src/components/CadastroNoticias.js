@@ -4,10 +4,15 @@ import axios from "axios";
 import { useSnackbar } from "notistack";
 import { Redirect, useLocation } from "react-router";
 
-export default function Noticia({ signedIn, categories, getPosts }) {
+export default function CadastroNoticia({
+  signedIn,
+  categories,
+  getPosts,
+  user,
+}) {
   const [title, setTitle] = useState("");
   const [articleBody, setArticleBody] = useState("");
-  const [author, setAuthor] = useState("");
+  const [author, setAuthor] = useState(user.nome);
   const [imageURL, setImageURL] = useState("");
   const [category, setCategory] = useState("");
 
@@ -53,6 +58,7 @@ export default function Noticia({ signedIn, categories, getPosts }) {
   };
 
   if (signedIn) {
+    console.log(user);
     return (
       <div className="main-noticias">
         <div className="container" id="container">
@@ -70,6 +76,8 @@ export default function Noticia({ signedIn, categories, getPosts }) {
                 type="text"
                 placeholder="Autor"
                 required
+                value={author}
+                disabled
                 onChange={e => setAuthor(e.target.value)}
               />
               <textarea
