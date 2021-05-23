@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PostedCategories from "../components/PostedCategories";
 import Page404 from "./Page404";
 import Login from "../components/Login";
+import CadastroNoticia from "../components/CadastroNoticias";
 
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
@@ -101,6 +102,18 @@ export default function Home() {
                     getPosts={getPosts}
                     blogs={blogs}
                     signedIn={signedIn}
+                  />
+                );
+              }}
+            />
+            <Route
+              path="/criar-noticia"
+              component={() => {
+                return (
+                  <CadastroNoticia
+                    signedIn={signedIn}
+                    categories={categories}
+                    getPosts={getPosts}
                   />
                 );
               }}

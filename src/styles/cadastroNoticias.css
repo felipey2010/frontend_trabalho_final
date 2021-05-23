@@ -1,13 +1,10 @@
 .main-noticias {
-  background: #f6f5f7;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-family: "Montserrat", sans-serif;
-  height: 100vh;
-  /* margin: -20px 0 50px; */
-  overflow: hidden;
+  height: 100%;
 }
 
 .main-noticias .form {
@@ -50,6 +47,7 @@
   border-color: #000000;
   font-size: 18px;
   border-radius: 6px;
+  margin: 4px;
 }
 .cadastrarNoticia:hover {
   transform: scale(1.05);
@@ -62,4 +60,14 @@
   padding: 12px 15px;
   margin: 8px 0;
   width: 100%;
+}
+
+.categoria-div {
+  width: 100%;
+  margin: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: inherit;
 }
