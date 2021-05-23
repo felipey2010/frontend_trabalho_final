@@ -1,6 +1,6 @@
 ### Descrição
 ****
-Este é um dos projetos mais interessantes que já construí com meu amigo brunorcx. Não está totalmente concluído, mas o resultado é satisfatório. 
+Este é um dos projetos mais interessantes que já construí com meu amigo [brunorcx](https://github.com/brunorcx). Não está totalmente concluído, mas o resultado é satisfatório. 
 ****
 ### Features
 
