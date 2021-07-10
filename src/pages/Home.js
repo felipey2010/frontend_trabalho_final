@@ -129,7 +129,7 @@ export default function Home() {
             />
             <Route
               path="/post/:id"
-              render={props => <Article {...props} signedIn={signedIn} />}
+              render={props => <Article {...props} getPosts={getPosts} />}
             />
             <Route
               path="/post/edit/:id"

@@ -32,7 +32,9 @@ export default function Navbar({ user, signedIn, setSignedIn }) {
 
   return (
     <nav className="navbar">
-      <h1>Tech News Blog</h1>
+      <Link to="/">
+        <h1>Tech News Blog</h1>{" "}
+      </Link>
       <div className="links">
         <Link to="/">Pagina Inicial</Link>
         <Link to="/categorias">Categorias </Link>
